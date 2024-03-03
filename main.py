@@ -22,10 +22,6 @@ st.set_page_config(page_title="Grammar Check on Sentences", layout="wide")
 st.title("Grammar Check on Sentences")
 
 
-"""
-set up logging 
-"""
-
 logging.basicConfig(
     handlers=[
         StreamHandler(stream=sys.stdout),
@@ -50,13 +46,6 @@ logging.basicConfig(
 # streamHandler.setFormatter(formatter)
 # streamHandler.setLevel(logging.INFO)
 # logger.addHandler(streamHandler)
-
-
-"""
-todo:
-1. add the OpenSource LLM 
-2. run in batch mode
-"""
 
 default_text = "It is is more fun to talk with someone who doesnt use long, difikolt words but rather short, easy words like, What about lunch"
 
@@ -85,9 +74,6 @@ col_list = st.columns(len(Tools))
 with col_list[0]:
     st.subheader(Tools.Sapling.name)
     if st.button("Check", key="sapling_btn"):
-        # st.session_state[Tools.Sapling.name] = sapling_check(
-        #     st.secrets.SAPLING_API_KEY, input_text
-        # )
         st.session_state[Tools.Sapling.name] = grammar_checker(
             Tools.Sapling, input_text
         )
